@@ -1,0 +1,107 @@
+
+class ft {
+    click() {
+
+    for(;;){
+    let isVisible = browser.isVisible('//body[p="go1"]');
+    let isVisible2 = browser.isVisible('//body[p="go2"]');
+    
+    if (isVisible == true) {
+      browser.pause(500);
+      browser.click('//input');
+      browser.pause(500);
+    } else if(isVisible2 == true){
+      browser.pause(500);
+      browser.click('//input');
+      browser.pause(500);
+    } else {
+      browser.pause(500);
+      browser.click('//input'); 
+    break;
+    }
+    }
+    return this;  
+    }
+}
+module.exports = new ft();
+
+
+const Ft = require('./ft');
+
+
+
+
+class F {
+    keys() {
+    browser.pause(500);
+    browser.keys('f');
+    browser.pause(500);
+    let isVisible = browser.isVisible('');
+    if (isVisible !== true) {
+
+    } else {
+        var fight = new Ft;
+    }
+    return this;  
+    }
+}
+module.exports = F;
+
+
+const W = require('./w');
+const S = require('./s');
+const A = require('./a');
+const D = require('./d');
+const Q = require('./q');
+const E = require('./e');
+const Z = require('./z');
+const F = require('./f');
+
+
+class Ways {
+    constructor(label, type) {
+        switch(type) {
+            case 'up':
+              return new W();
+            case 'down':
+             return new S();
+            case 'left':
+             return new A();
+            case 'right':
+             return new D();
+            case 'q':
+             return new Q();
+            case 'e':
+             return new E();
+            case 'z':
+             return new Z();
+            case 'f':
+             return new F();
+        }
+    }
+}
+module.exports = Ways;
+
+//index
+const BasePage = require('../base');
+const schema = require('./schema');
+const ClickElement = require('../../helper/clickElement');
+const Base = require('../../helper/Base');
+const Ways = require('../../helper/ways');
+
+class Dem extends BasePage {
+    create() {
+        schema.forEach((val) => {
+            var element = new Ways(val.type);
+            element.keys();
+        });
+    }
+}
+module.exports = new Dem();
+// index
+
+// schema
+module.exports = [ 
+    { type: 'up'}
+   
+]
